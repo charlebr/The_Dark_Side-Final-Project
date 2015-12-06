@@ -1,8 +1,9 @@
 LIBS=-lgtest -lpthread
 
-install:integ.cu
+install:integ.cu test.cu
 	nvcc -o integral integ.cu
-test:test.cu integ.cu
-	nvcc -o test test.cu $(LIBS)
+	nvcc -o gtest_test test.cu $(LIBS)
+test:gtest_test
+	srun ./gtest_test
 run:integral
 	srun ./integral
